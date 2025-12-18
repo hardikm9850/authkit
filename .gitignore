@@ -1,3 +1,14 @@
-# IntelliJ / GoLand
+# Go
+/bin/
+/dist/
+*.exe
+*.out
+*.test
+
+# IDE
 .idea/
+.vscode/
 *.iml
+
+# OS
+.DS_Store
