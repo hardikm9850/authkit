@@ -2,7 +2,6 @@
 
 `authkit` is a **reusable Go library** for authentication in Go applications. It provides **JWT token generation & verification**, **password hashing**, and **middleware support**, enabling secure, stateless authentication across multiple Go services.
 
----
 
 ## Features
 
@@ -10,7 +9,6 @@
 * Password hashing & verification (bcrypt)
 * Middleware support for **Gin** and **net/http**
 
----
 
 ## Installation
 
@@ -18,7 +16,6 @@
 go get github.com/hardikm9850/authkit@v1.1.0
 ```
 
----
 
 ## Usage
 
@@ -56,7 +53,6 @@ token, _ := manager.Generate(claims)
 verifiedClaims, _ := manager.Verify(token)
 ```
 
----
 
 ### Password Hashing
 
@@ -70,7 +66,6 @@ hash, _ := password.HashPassword("mySecret123")
 err := password.VerifyPassword("mySecret123", hash) // nil if matches
 ```
 
----
 
 ### Middleware
 
@@ -107,7 +102,6 @@ http.Handle("/protected", middleware.JWTAuthHTTP(manager)(http.HandlerFunc(func(
 })))
 ```
 
----
 
 ## Installation Guide
 
@@ -121,8 +115,6 @@ go get github.com/hardikm9850/authkit@v1.1.0
   * Middleware for Gin and net/http
 
 * v1.0.0 was JWT only.
-
----
 
 ## License
 
