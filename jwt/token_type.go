@@ -3,6 +3,6 @@ package jwt
 type TokenType string
 
 const (
-    AccessToken  TokenType = "access"
-    RefreshToken TokenType = "refresh"
+	AccessToken  TokenType = "access"
+	RefreshToken TokenType = "refresh"
 )

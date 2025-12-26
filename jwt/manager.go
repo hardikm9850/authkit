@@ -1,9 +1,9 @@
 package jwt
 
 type HS256Manager interface {
-    GenerateAccessToken(userID string) (string, error)
-    GenerateRefreshToken(userID string) (string, error)
+	GenerateAccessToken(userID string) (string, error)
+	GenerateRefreshToken(userID string) (string, error)
 
-    VerifyAccessToken(token string) (*Claims, error)
-    VerifyRefreshToken(token string) (*Claims, error)
+	VerifyAccessToken(token string) (*Claims, error)
+	VerifyRefreshToken(token string) (*Claims, error)
 }
