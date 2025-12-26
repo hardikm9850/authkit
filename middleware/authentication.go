@@ -1,11 +1,16 @@
 package middleware
 
 import (
+	jwt "github.com/hardikm9850/authkit/authkit"
 	"net/http"
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/hardikm9850/authkit/jwt"
+)
+
+const (
+	ContextUserIDKey = "userID"
+	ContextRolesKey  = "roles"
 )
 
 func JWTAuth(jwtManager jwt.Manager) gin.HandlerFunc {
@@ -17,14 +22,14 @@ func JWTAuth(jwtManager jwt.Manager) gin.HandlerFunc {
 		}
 
 		tokenStr := strings.TrimPrefix(authHeader, "Bearer ")
-		claims, err := jwtManager.Verify(tokenStr)
+		claims, err := jwtManager.VerifyAccessToken(tokenStr)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
 			return
 		}
 
-		c.Set("userID", claims.UserID)
-		c.Set("roles", claims.Roles)
+		c.Set(ContextUserIDKey, claims.UserID)
+		c.Set(ContextRolesKey, claims.Roles)
 		c.Next()
 	}
 }
