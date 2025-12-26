@@ -13,7 +13,7 @@
 ## Installation
 
 ```bash
-go get github.com/hardikm9850/authkit@v1.1.0
+go get github.com/hardikm9850/authkit@v1.2.1
 ```
 
 
