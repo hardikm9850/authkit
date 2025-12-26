@@ -13,7 +13,11 @@ const (
 	ContextRolesKey  = "roles"
 )
 
-func JWTAuth(jwtManager jwt.Manager) gin.HandlerFunc {
+type AccessTokenVerifier interface {
+	VerifyAccessToken(token string) (*jwt.Claims, error)
+}
+
+func JWTAuth(verifier AccessTokenVerifier) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		authHeader := c.GetHeader("Authorization")
 		if authHeader == "" || !strings.HasPrefix(authHeader, "Bearer ") {
@@ -22,7 +26,7 @@ func JWTAuth(jwtManager jwt.Manager) gin.HandlerFunc {
 		}
 
 		tokenStr := strings.TrimPrefix(authHeader, "Bearer ")
-		claims, err := jwtManager.VerifyAccessToken(tokenStr)
+		claims, err := verifier.VerifyAccessToken(tokenStr)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
 			return
