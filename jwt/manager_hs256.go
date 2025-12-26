@@ -11,7 +11,7 @@ type hs256Manager struct {
     config Config
 }
 
-func NewManager(config Config) (Manager, error) {
+func NewManager(config Config) (HS256Manager, error) {
     if err := config.Validate(); err != nil {
         return nil, err
     }

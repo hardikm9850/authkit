@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	jwt "github.com/hardikm9850/authkit/authkit"
+	jwt "github.com/hardikm9850/authkit/jwt"
 	"net/http"
 	"strings"
 

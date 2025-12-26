@@ -4,7 +4,7 @@ import (
     "github.com/golang-jwt/jwt/v5"
 )
 
-func (j *JWTManager) verify(tokenString string, secret string) (*Claims, error) {
+func (j *Manager) verify(tokenString string, secret string) (*Claims, error) {
     token, err := jwt.ParseWithClaims(
         tokenString,
         &Claims{},

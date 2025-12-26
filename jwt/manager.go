@@ -1,6 +1,6 @@
 package jwt
 
-type Manager interface {
+type HS256Manager interface {
     GenerateAccessToken(userID string) (string, error)
     GenerateRefreshToken(userID string) (string, error)
 

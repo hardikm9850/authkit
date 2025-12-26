@@ -6,7 +6,7 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 )
 
-func (j *JWTManager) generateToken(
+func (j *Manager) generateToken(
 	userID string,
 	tokenType TokenType,
 	ttl time.Duration,
